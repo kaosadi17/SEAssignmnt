@@ -1,0 +1,12 @@
+package aspects;
+
+import bankFunctions.Bank;
+
+public aspect SystemLog {
+	pointcut Logging(Bank bank) : initialization(Bank.new(..)) && target(bank) && !within(SystemLog);
+	after(Bank bank) : Logging(bank){
+		  System.out.println("In Logg");
+		WriteFile("User Login - Username:- "++" Password:- "+bankUser.byUsingPwd()+" Sucess:- "+bankUser.isLoggedin());    
+	  }
+
+}

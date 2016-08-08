@@ -1,0 +1,19 @@
+package aspects;
+
+import bankFunctions.Customer;
+
+public aspect LoginLog {
+	
+	pointcut login() : call (boolean Bank.validation(..)) ;
+	after(Customer customer) : CustomerLogging(customer){
+		  System.out.println("In Logg");
+		  //WriteFile("New Customer : first name : " + customer.getFirstName() + " pin No : "+ customer.getPin());
+		     
+	  }
+	
+    private void //WriteFile(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

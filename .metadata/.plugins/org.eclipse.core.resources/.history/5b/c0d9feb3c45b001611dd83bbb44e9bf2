@@ -1,0 +1,18 @@
+package bankFunctions;
+
+import java.util.Date;
+
+public class Transactions {
+	
+	private String type;
+	private double amount;
+	private Date timestamp;
+	
+	public Transactions(String type,double amount){
+		this.type = type;
+		this.amount = amount;
+		this.timestamp = new Date();
+		
+	}
+	
+}

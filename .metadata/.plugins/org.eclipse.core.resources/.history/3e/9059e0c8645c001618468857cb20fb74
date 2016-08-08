@@ -1,0 +1,28 @@
+package aspects;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import bankFunctions.Transactions;
+
+public aspect TransactionLog {
+	pointcut TransactionLogging(Transactions transactions) : initialization(Transactions.new(..)) && target(transactions) && !within(customerLog);
+	  after(Transactions transactions) : TransactionLogging(transactions){
+		   WriteFile("New Customer : first name : " + customer.getFirstName() + " pin No : "+ customer.getPin());
+		     
+	  }
+	  
+	  public void WriteFile(String Log){
+		  try {
+			    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("customer.txt", true)));
+			    out.println(Log);
+			    out.close();
+			} catch (IOException e) {
+				System.out.println(e);
+			    //exception handling left as an exercise for the reader
+			}
+	  }
+
+}

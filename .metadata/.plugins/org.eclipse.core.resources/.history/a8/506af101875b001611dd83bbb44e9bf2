@@ -1,0 +1,18 @@
+package bankFunctions;
+
+public class Account {
+	
+	private Customer customer;
+	private String accountNo;
+	private double balance;
+	private int numAcnts = 10000;
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

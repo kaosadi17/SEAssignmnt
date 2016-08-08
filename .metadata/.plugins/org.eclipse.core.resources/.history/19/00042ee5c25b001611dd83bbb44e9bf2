@@ -1,0 +1,90 @@
+package bankUI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+
+import java.awt.Font;
+
+import javax.swing.JButton;
+
+import bankFunctions.Account;
+import bankFunctions.Bank;
+
+public class AccountInqUI extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AccountInqUI frame = new AccountInqUI();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AccountInqUI() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblAccountInquiry = new JLabel("Account Inquiry");
+		lblAccountInquiry.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblAccountInquiry.setBounds(119, 11, 139, 26);
+		contentPane.add(lblAccountInquiry);
+		
+		JLabel lblAccountNo = new JLabel("Account No");
+		lblAccountNo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblAccountNo.setBounds(59, 94, 93, 26);
+		contentPane.add(lblAccountNo);
+		
+		JLabel lblBalance = new JLabel("Available Balance");
+		lblBalance.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblBalance.setBounds(59, 131, 118, 26);
+		contentPane.add(lblBalance);
+		
+		JButton btnMainMenu = new JButton("Main Menu");
+		btnMainMenu.setBounds(273, 206, 89, 23);
+		contentPane.add(btnMainMenu);
+		
+		JLabel label = new JLabel("");
+		label.setBounds(212, 102, 46, 14);
+		contentPane.add(label);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setBounds(212, 139, 46, 14);
+		contentPane.add(label_1);
+		
+		Bank bank = Bank.getInstance();
+		Account currentAc = bank.getAccount(Bank.getCurAcNo());
+		String acNo = currentAc.getAccountNo();
+		label.setText(acNo);
+		double bal = currentAc.getBalance();
+		String bal1 = String.valueOf(bal);
+		label_1.setText(bal1);
+	}
+
+}

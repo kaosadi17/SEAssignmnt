@@ -1,0 +1,22 @@
+package aspects;
+
+import bankFunctions.Bank;
+
+public aspect LoginLog {
+	
+	public pointcut login() : execution (* Bank.validation(..));
+	after() returning(Object objectReturn) :login(){
+	    System.out.println(objectReturn);
+	    if(objectReturn.equals(true)){
+	    	Bank bank = Bank.getInstance();
+	    	Acccount account = bank.getAccount(Bank.getCurAcNo());
+	    	WriteFile("New Login : Account No : " + Bank.getCurAcNo() + " Customer NIC : "+ );
+	    }
+	}
+	
+//    private void //WriteFile(String string) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
+}

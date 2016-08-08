@@ -1,0 +1,109 @@
+package bankUI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+
+import bankFunctions.Account;
+import bankFunctions.Bank;
+import bankFunctions.Transactions;
+
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+
+import java.awt.Font;
+
+import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class AccountHisInq extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+	private JLabel label;
+
+	/**
+	 * Launch the application.
+	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AccountHisInq frame = new AccountHisInq();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AccountHisInq() {
+		setBackground(Color.BLACK);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblAccountHistory = DefaultComponentFactory.getInstance().createTitle("Account History");
+		lblAccountHistory.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblAccountHistory.setBounds(128, 11, 163, 20);
+		contentPane.add(lblAccountHistory);
+		
+		JLabel lblDate = new JLabel("Date");
+		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDate.setBounds(30, 50, 46, 14);
+		contentPane.add(lblDate);
+		
+		JLabel lblType = new JLabel("Type");
+		lblType.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblType.setBounds(128, 50, 46, 14);
+		contentPane.add(lblType);
+		
+		JLabel lblAmount = new JLabel("Amount");
+		lblAmount.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblAmount.setBounds(217, 50, 46, 14);
+		contentPane.add(lblAmount);
+		
+		JLabel lblAvailableBlannce = new JLabel("Available Blannce");
+		lblAvailableBlannce.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblAvailableBlannce.setBounds(312, 50, 91, 14);
+		contentPane.add(lblAvailableBlannce);
+		
+		
+		JButton btnMainMenu = new JButton("Main Menu");
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				new MainMenu();
+			}
+		});
+		btnMainMenu.setBounds(307, 227, 117, 23);
+		contentPane.add(btnMainMenu);
+		
+		Bank bank = Bank.getInstance();
+		Account currentAc = bank.getAccount(Bank.getCurAcNo());
+		int len = currentAc.getLength();
+		
+		
+		
+	}
+}

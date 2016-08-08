@@ -1,0 +1,80 @@
+package bankFunctions;
+
+
+import java.util.ArrayList;
+
+public class Bank {
+	
+	private ArrayList<Customer> customers;
+	private ArrayList<Account> accounts;
+	private static Bank bank;
+	private static String currentAcNo;
+	
+	
+	private Bank() {
+		customers = new ArrayList<Customer>();
+		accounts = new ArrayList<Account>();
+		
+	}
+	
+	
+	public static void setCurAcNo(String acNo){
+		currentAcNo = acNo;
+	}
+	
+	public static String getCurAcNo(){
+		return currentAcNo;
+	}
+	public Account getAccount(String accountNo){
+		for(Account a : this.accounts){
+			if(a.getAccountNo().compareTo(accountNo) == 0){
+				return a;
+			}
+		}
+		return null;
+		
+	}
+	
+	
+	public static Bank getInstance(){
+		if(bank == null){
+			bank = new Bank();
+		}
+		return bank;
+		
+	}
+	
+	public void addCustomer(Customer customer){
+		this.customers.add(customer);
+	}
+	
+	public void addAccount(Account account){
+		this.accounts.add(account);
+	}
+	
+	
+	public boolean validateAccount(String acNO){
+		for(Account a : this.accounts){
+			if(a.getAccountNo().compareTo(acNO) == 0){
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	public boolean validation(String acNo, String pin){
+		return false;
+	}
+//	public boolean validation(String acNo, String pin){
+//		for(Account a : this.accounts){
+//			if(a.getAccountNo().compareTo(acNo) == 0){
+//				for(Customer c : this.customers){
+//					if(c.getPin().compareTo(pin) == 0){
+//						return true;
+//					}
+//				}
+//			}
+//		}
+//		return false;
+//	}
+}

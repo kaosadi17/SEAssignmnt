@@ -1,0 +1,30 @@
+package aspects;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+import bankFunctions.Bank;
+
+public aspect SystemLog {
+	pointcut Logging(Bank bank) : initialization(Bank.new(..)) && target(bank) && !within(SystemLog);
+	after(Bank bank) : Logging(bank){
+		  System.out.println("In Logg");
+		  String curAcNo = bank.getCurAcNo();
+		  String pin = bank.getPin(curAcNo);
+		  boolean valid = bank.validation(curAcNo, pin);
+		  WriteFile("User Login : Account No:- "+curAcNo+" Pin:- "+pin+" Sucess:- "+valid);    
+	  }
+
+     private void WriteFile(String log) {
+    	 try {
+			    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("log.txt", true)));
+			    out.println(log);
+			    out.close();
+			} catch (IOException e) {
+			    //exception handling left as an exercise for the reader
+			}
+		
+	}
+
+}

@@ -1,0 +1,33 @@
+package bankFunctions;
+
+import java.util.ArrayList;
+
+public class Bank {
+	
+	private ArrayList<Customer> customers;
+	private ArrayList<Account> accounts;
+	private String acNo;
+	private String pinNo;
+	
+	public Bank() {
+		customers = new ArrayList<Customer>();
+		accounts = new ArrayList<Account>();
+		
+	}
+	
+	public void addCustomer(Customer customer){
+		this.customers.add(customer);
+	}
+	
+	public void addAccount(Account account){
+		this.accounts.add(account);
+	}
+	
+	public static void getLogin(String acNo, String pinNo){
+		acNo = 
+	}
+	
+	public void validation(String acNo, String pin){
+		System.out.println("hiiiii");
+	}
+}

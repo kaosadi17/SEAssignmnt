@@ -1,0 +1,76 @@
+package bankUI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+
+public class ProfileUpdate extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ProfileUpdate frame = new ProfileUpdate();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ProfileUpdate() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblUpdateProfile = new JLabel("Update Profile");
+		lblUpdateProfile.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblUpdateProfile.setBounds(138, 11, 162, 20);
+		contentPane.add(lblUpdateProfile);
+		
+		JLabel lblAcNo = new JLabel("Ac No");
+		lblAcNo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblAcNo.setBounds(39, 56, 46, 14);
+		contentPane.add(lblAcNo);
+		
+		JLabel lblFirstName = new JLabel("First Name");
+		lblFirstName.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblFirstName.setBounds(39, 90, 86, 14);
+		contentPane.add(lblFirstName);
+		
+		JLabel lblLastName = new JLabel("Last Name");
+		lblLastName.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblLastName.setBounds(39, 122, 86, 14);
+		contentPane.add(lblLastName);
+		
+		JLabel lblNic = new JLabel("NIC");
+		lblNic.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNic.setBounds(39, 158, 46, 14);
+		contentPane.add(lblNic);
+		
+		JLabel lblPin = new JLabel("PIN");
+		lblPin.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblPin.setBounds(39, 191, 46, 14);
+		contentPane.add(lblPin);
+	}
+}

@@ -1,0 +1,38 @@
+package aspects;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import bankFunctions.Account;
+import bankFunctions.Bank;
+
+public aspect LoginLog {
+	
+	public pointcut login() : execution (* Bank.validation(..));
+	after() returning(Object objectReturn) :login(){
+	    System.out.println(objectReturn);
+	    if(objectReturn.equals(true)){
+	    	Bank bank = Bank.getInstance();
+	    	String acNo = Bank.getCurAcNo();
+	    	Account account = bank.getAccount(acNo);
+	    	String nic = account.getCustomer().getNIC();
+	    	WriteFile("New Login : Account No : " + acNo + " Customer NIC : "+ nic );
+	    }
+	}
+	
+	public void WriteFile(String Log){
+		  try {
+			    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Login.txt", true)));
+			    out.println(Log);
+			    out.close();
+			} catch (IOException e) {
+				System.out.println(e);
+			    //exception handling left as an exercise for the reader
+			}
+	  }
+
+
+
+}

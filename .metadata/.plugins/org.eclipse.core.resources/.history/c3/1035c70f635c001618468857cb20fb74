@@ -1,0 +1,31 @@
+package aspects;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import bankFunctions.Account;
+import bankFunctions.Customer;
+
+public aspect AccountLog {
+	pointcut AccountLogging(Account account) : initialization(Account.new(..)) && target(account) && !within(AccountLog);
+	  after(Account account) : AccountLogging(account){
+		  System.out.println("In Logg");
+		  String nic = account.getCustomer().getNIC();
+		  WriteFile("New Account : Account No : " + account.getAccountNo()  + " Balance : "+ account.getBalance() + " Customer NIC : "+ nic);
+		     
+	  }
+	  
+	  public void WriteFile(String Log){
+		  try {
+			    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("customer.txt", true)));
+			    out.println(Log);
+			    out.close();
+			} catch (IOException e) {
+				System.out.println(e);
+			    //exception handling left as an exercise for the reader
+			}
+	  }
+
+}

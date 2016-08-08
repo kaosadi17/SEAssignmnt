@@ -1,0 +1,64 @@
+package bankFunctions;
+
+import java.util.ArrayList;
+
+public class Bank {
+	
+	private ArrayList<Customer> customers;
+	private ArrayList<Account> accounts;
+	private static Bank bank;
+	private static String acNo;
+	private static String pinNo;
+	
+	private Bank() {
+		customers = new ArrayList<Customer>();
+		accounts = new ArrayList<Account>();
+		
+	}
+	
+	public static Bank getInstance(){
+		if(bank == null){
+			bank = new Bank();
+		}
+		return bank;
+		
+	}
+	
+	public void addCustomer(Customer customer){
+		this.customers.add(customer);
+	}
+	
+	public void addAccount(Account account){
+		this.accounts.add(account);
+	}
+	
+	public String getAcNo() {
+		return acNo;
+	}
+
+	public static void setAcNo(String acNo) {
+		Bank.acNo = acNo;
+		System.out.println(acNo);
+	}
+
+	public String getPinNo() {
+		return pinNo;
+	}
+
+	public static void setPinNo(String pinNo) {
+		Bank.pinNo = pinNo;
+		System.out.println(pinNo);
+	}
+
+	public boolean validation(String acNo, String pin){
+		for(Account a : this.accounts){
+			if(a.getAccountNo() == acNo){
+				for(Customer c : this.customers){
+					if(c.getPin() == pin){
+						return true;
+					}
+				}
+			}
+		}
+	}
+}

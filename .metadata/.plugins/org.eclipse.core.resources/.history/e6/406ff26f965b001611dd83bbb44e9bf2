@@ -1,0 +1,18 @@
+package bankFunctions;
+
+public class Main {
+	
+	public static void main(String args[]){
+		Bank bank = new Bank();
+		makeAccount("Amali","Osadi","928520455v","123",bank);
+	}
+
+	private static void makeAccount(String fname, String lname,String nic, String pin, Bank bank) {
+		Customer customer = new
+		
+		
+	}
+	
+	
+
+}

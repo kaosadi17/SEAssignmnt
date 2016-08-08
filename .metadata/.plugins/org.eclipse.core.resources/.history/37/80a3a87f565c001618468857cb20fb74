@@ -1,0 +1,8 @@
+package aspects;
+
+import bankFunctions.Bank;
+
+public aspect SystemLog {
+	pointcut Logging(Bank bank) : initialization(Bank.new(..)) && target(bankUser) && !within(SystemLog);
+
+}

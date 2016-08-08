@@ -1,0 +1,68 @@
+package bankFunctions;
+
+public class Account {
+	
+	private Customer customer;
+	private String accountNo;
+	private double balance;
+	private int numAcnts = 10004;
+	
+	public Account(Customer customer){
+		this.customer = customer;
+		this.balance = 5000;
+		this.accountNo = getMadeAccountNo();
+	}
+
+	
+	private String getMadeAccountNo() {
+		// TODO Auto-generated method stub
+		int acNo = numAcnts + 1;
+		this.numAcnts = acNo;
+		return Integer.toString(acNo);
+	}
+	public String getAccountNo() {
+		return this.accountNo;
+	}
+
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public void transfer(Account account, double amount){
+		double curAmount = account.getBalance();
+		if(curAmount < amount){
+			System.out.println("Insufficient");
+		}
+		else{
+			this.balance = this.balance - amount;
+			double newbalance = account.getBalance() + amount;
+			account.setBalance(newbalance);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

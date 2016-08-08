@@ -1,0 +1,5 @@
+package aspect;
+
+public aspect SystemLog {
+
+}

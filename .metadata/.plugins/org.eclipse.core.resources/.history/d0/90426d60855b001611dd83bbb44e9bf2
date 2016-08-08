@@ -1,0 +1,11 @@
+package bankFunctions;
+
+public class Customer {
+	
+	private String firstName;
+	private String lastName;
+	private String NIC;
+	private String pin;
+	private Account account;
+
+}

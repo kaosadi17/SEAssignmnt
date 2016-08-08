@@ -1,0 +1,23 @@
+package bankFunctions;
+
+import java.util.ArrayList;
+
+public class Bank {
+	
+	private ArrayList<Customer> customers;
+	private ArrayList<Account> accounts;
+	
+	private Bank() {
+		customers = new ArrayList<Customer>();
+		accounts = new ArrayList<Account>();
+		
+	}
+	
+	public void addCustomer(Customer customer){
+		this.customers.add(customer);
+	}
+	
+	public void addAccount(Account account){
+		this.accounts.add(account);
+	}
+}

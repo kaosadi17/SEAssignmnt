@@ -1,0 +1,22 @@
+package aspects;
+
+import bankFunctions.Customer;
+
+public aspect customerLog {
+	pointcut CustomerLogging(Customer customer) : initialization(Customer.new(..)) && target(customer) && !within(customerLog);
+	  after(BankUser bankUser) : RecordLogging(bankUser){
+		  System.out.println("In Logg");
+		WriteFile("Login - Username:- "+bankUser.getUname()+" Password:- "+bankUser.byUsingPwd()+" Sucess:- "+bankUser.isLoggedin());    
+	  }
+	  
+	  public void WriteFile(String Log){
+		  try {
+			    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("myfile.txt", true)));
+			    out.println(Log);
+			    out.close();
+			} catch (IOException e) {
+			    //exception handling left as an exercise for the reader
+			}
+	  }
+
+}

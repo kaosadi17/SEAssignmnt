@@ -1,0 +1,31 @@
+package bankFunctions;
+
+public class Account {
+	
+	private Customer customer;
+	private int accountNo;
+	private double balance;
+	private int numAcnts = 10004;
+	
+	public Account(Customer customer){
+		this.customer = customer;
+		this.balance = 0;
+		this.accountNo = getAccountNo();
+	}
+
+	private int getAccountNo() {
+		// TODO Auto-generated method stub
+		int acNo = numAcnts + 1;
+		this.numAcnts = acNo;
+		return acNo;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

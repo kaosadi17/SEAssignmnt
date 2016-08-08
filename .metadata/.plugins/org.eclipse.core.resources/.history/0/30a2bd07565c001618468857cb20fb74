@@ -1,0 +1,9 @@
+
+
+import bankFunctions.Bank;
+
+public aspect SystemLog {
+	
+	pointcut LoginRec(Bank bank) : pointcut_expression;
+
+}

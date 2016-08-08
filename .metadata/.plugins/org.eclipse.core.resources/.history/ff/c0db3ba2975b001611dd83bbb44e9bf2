@@ -1,0 +1,47 @@
+package bankFunctions;
+
+import java.util.ArrayList;
+
+public class Bank {
+	
+	private ArrayList<Customer> customers;
+	private ArrayList<Account> accounts;
+	private static String acNo;
+	private String pinNo;
+	
+	public Bank() {
+		customers = new ArrayList<Customer>();
+		accounts = new ArrayList<Account>();
+		
+	}
+	
+	public void addCustomer(Customer customer){
+		this.customers.add(customer);
+	}
+	
+	public void addAccount(Account account){
+		this.accounts.add(account);
+	}
+	
+	public String getAcNo() {
+		return acNo;
+	}
+
+	public static void setAcNo(String acNo) {
+		this.acNo = acNo;
+	}
+
+	public String getPinNo() {
+		return pinNo;
+	}
+
+	public void setPinNo(String pinNo) {
+		this.pinNo = pinNo;
+	}
+
+	
+	
+	public void validation(String acNo, String pin){
+		System.out.println("hiiiii");
+	}
+}

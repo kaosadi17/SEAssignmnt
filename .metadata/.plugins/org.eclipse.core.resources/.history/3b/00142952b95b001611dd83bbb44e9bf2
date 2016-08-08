@@ -1,0 +1,79 @@
+package bankFunctions;
+
+import java.util.Random;
+
+public class Account {
+	
+	private Customer customer;
+	private String accountNo;
+	private double balance;
+	
+	
+	public Account(Customer customer){
+		this.customer = customer;
+		this.balance = 5000;
+		this.accountNo = getMadeAccountNo();
+	}
+	
+	
+
+	
+	private String getMadeAccountNo() {
+		String acNo = "";
+		Random rng = new Random();
+		int len = 5;
+		for (int c = 0; c < len; c++) {
+			acNo += ((Integer)rng.nextInt(10)).toString();
+		}
+		return acNo;
+	}
+	public String getAccountNo() {
+		return this.accountNo;
+	}
+
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public void transfer(Account account, double amount){
+		System.out.println(account.getAccountNo());
+		double curAmount = account.getBalance();
+		if(curAmount < amount){
+			System.out.println("Insufficient");
+		}
+		else{
+			this.balance = this.balance - amount;
+			System.out.println(this.balance);
+			System.out.println("hiiiiiii");
+			System.out.println(this.getBalance());
+			double newbalance = account.getBalance() + amount;
+			account.setBalance(newbalance);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

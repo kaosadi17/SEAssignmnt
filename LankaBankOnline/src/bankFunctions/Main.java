@@ -1,0 +1,29 @@
+package bankFunctions;
+
+import bankUI.Front;
+
+public class Main {
+	
+	public static void main(String args[]){
+		Bank bank = Bank.getInstance();
+		makeAccount("Amali","Osadi","928520455v","123",bank);
+		makeAccount("Nishani","Fernando","923250485v","456",bank);
+		Front front = new Front();
+		front.setVisible(true);
+		
+	}
+
+	public static String makeAccount(String fname, String lname,String nic, String pin, Bank bank) {
+		
+		Customer customer = new Customer(fname, lname, nic, pin);
+		Account account = new Account(customer);
+		System.out.println(account.getAccountNo());
+		bank.addAccount(account);
+		bank.addCustomer(customer);
+		return account.getAccountNo();
+		
+	}
+	
+	
+
+}

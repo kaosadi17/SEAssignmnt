@@ -1,0 +1,90 @@
+package bankUI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.TableModelEvent;
+import javax.swing.table.AbstractTableModel;
+
+import bankFunctions.Transactions;
+
+public class test1 extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					test1 frame = new test1();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the frame.
+	 */
+	private final static String[] header = {"Date", "Type", "Amount","Balance"};
+	public test1(ArrayList<Transactions> transactions) {
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setVisible(true);
+//		setBounds(100, 100, 450, 300);
+//		contentPane = new JPanel();
+//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//		contentPane.setLayout(new BorderLayout(0, 0));
+//		setContentPane(contentPane);
+		
+		TabModel tab = new TabModel(transactions,header);
+		JTable table = new JTable(tab);
+		add(new JScrollPane(table));
+		setSize(400, 400);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	}
+
+	class TabModel extends AbstractTableModel {
+		
+		private ArrayList<Transactions> transactions ;
+		private String[] header;
+		
+		TabModel(ArrayList<Transactions> transactions, String[] headers) {
+			this.transactions = transactions;
+			this.header = headers;
+			// TODO Auto-generated constructor stub
+		}
+
+
+		@Override
+		public int getColumnCount() {
+			return header.length;
+		}
+
+		@Override
+		public int getRowCount() {
+			return transactions.size();
+		}
+
+		@Override
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			String[] token = transactions.get(rowIndex).split(",");
+			 return token[columnIndex];
+
+
+			return null;
+		}
+		
+	}
+}

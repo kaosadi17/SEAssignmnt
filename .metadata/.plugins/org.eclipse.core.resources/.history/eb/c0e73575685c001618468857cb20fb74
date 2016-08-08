@@ -1,0 +1,17 @@
+package aspects;
+
+import bankFunctions.Bank;
+
+public aspect LoginLog {
+	
+	public pointcut login() : execution (* Bank.validation(..));
+	after() returning(Object objectReturn) :pointcutName(){
+	    System.out.println(objectReturn);
+	}
+	
+//    private void //WriteFile(String string) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+
+}
